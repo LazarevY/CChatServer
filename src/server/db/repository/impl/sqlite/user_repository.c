@@ -61,7 +61,7 @@ long_id user_repo_insert(User *user) {
     snprintf(created_at_str, sizeof(created_at_str), "%lld", current);
     snprintf(updated_at_str, sizeof(updated_at_str), "%lld", current);
     const char *params[] = {user->name, created_at_str, updated_at_str};
-    if (db_execute_param(db, sql, 3, params) != SQLITE_DONE) {
+    if (db_execute_param(db, sql, 3, params) != SQLITE_OK) {
         return 0;
     }
     return sqlite3_last_insert_rowid(db);

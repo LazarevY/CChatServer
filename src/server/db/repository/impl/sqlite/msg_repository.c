@@ -68,7 +68,7 @@ long_id msg_repo_insert(Message *message) {
     snprintf(timestamp_str, sizeof(timestamp_str), "%lld", message->timestamp);
     snprintf(reply_id_str, sizeof(reply_id_str), "%lld", message->reply_id);
     const char *params[] = {user_id_str, message->text, timestamp_str, reply_id_str};
-    if (db_execute_param(db, sql, 4, params) != SQLITE_DONE) {
+    if (db_execute_param(db, sql, 4, params) != SQLITE_OK) {
         return 0;
     }
     return sqlite3_last_insert_rowid(db);

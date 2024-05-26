@@ -68,7 +68,7 @@ long long chat_repo_insert(Chat *chat) {
     snprintf(created_at_str, sizeof(created_at_str), "%lld", current);
     snprintf(updated_at_str, sizeof(updated_at_str), "%lld", current);
     const char *params[] = {chat->name, chat->desc, created_at_str, created_at_str};
-    if (db_execute_param(db, sql, 4, params) != SQLITE_DONE) {
+    if (db_execute_param(db, sql, 4, params) != SQLITE_OK) {
         return 0;
     }
     return sqlite3_last_insert_rowid(db);

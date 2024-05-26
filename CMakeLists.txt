@@ -5,10 +5,13 @@ set(CMAKE_C_STANDARD 23)
 
 include_directories(src/server)
 include_directories(src)
+include_directories(external/mongoose)
 
 link_directories(/usr/lib /usr/lib/x86_64-linux-gnu)
 
 add_executable(ChatServer src/main.c
+        external/mongoose/mongoose.h
+        external/mongoose/mongoose.c
         src/server/entity/chat.h
         src/server/db/repository/chat_repository.h
         src/server/utils.h
@@ -24,6 +27,11 @@ add_executable(ChatServer src/main.c
         src/server/entity/user.h
         src/server/db/repository/user_repository.h
         src/server/db/repository/impl/sqlite/user_repository.c
+        src/server/controller/routes.h
+        src/server/controller/routes.c
+        src/server/controller/chat/chat_controller.h
+        src/server/controller/chat/chat_controller.c
+        src/server/entity/message.c
 )
 
-target_link_libraries(ChatServer -lsqlite3)
+target_link_libraries(ChatServer -lsqlite3 -lcjson)
