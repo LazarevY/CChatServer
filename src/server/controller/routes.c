@@ -122,6 +122,8 @@ void register_routes() {
     add_route("GET", "/chats", chat_controller_handle_get_chats);
     add_route("GET", "/chats/{id}", chat_controller_handle_get_chat_by_id);
     add_route("POST", "/chats", chat_controller_handle_create_chat);
+    add_route("PUT", "/chats", chat_controller_handle_update_chat);
+    add_route("DELETE", "/chats/{id}", chat_controller_handle_delete_chat_by_id);
 }
 
 void enable_controllers() {
